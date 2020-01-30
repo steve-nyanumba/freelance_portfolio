@@ -383,6 +383,12 @@
 					<h2>Resume</h2>
 				</div>
 
+
+
+
+
+
+
 				<!-- Experience & Education Row Start -->
 				<div class="row mt-100 mob-mt">
 
@@ -471,6 +477,12 @@
 					<!-- Education Column End -->
 				</div>
 				<!-- Experience & Education Row End -->
+
+
+
+
+
+
 
 				<!-- Skills Row Start -->
 				<div class="row mt-100">

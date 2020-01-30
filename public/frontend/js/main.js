@@ -23,17 +23,17 @@ Table of Content
 ----------------------------------- */
 
 $(window).on('load', function() {
-		
+
 	/* -----------------------------------
 				1. Preloader
 	----------------------------------- */
 	$("#preloader").delay(1000).fadeOut();
-	
+
 });
 
 $(document).ready(function() {
     "use strict";
-	
+
 	/* -----------------------------------
 	      2. Menu and Page Start
 	----------------------------------- */
@@ -62,13 +62,13 @@ $(document).ready(function() {
 		setTimeout(function() {
 			$('.but-blog').toggleClass('blog-toggle');
 		}, 400);
-	
+
 		// Contact Button
 		setTimeout(function() {
 			$('.but-contact').toggleClass('contact-toggle');
 		}, 500);
 	});
-	
+
 	$($menu_all).on('click', function() {
 		$(this).siblings().css({'z-index': '5'});
 		$(this).css({'z-index': '10'});
@@ -82,7 +82,7 @@ $(document).ready(function() {
 		}, 500);
 
 		$($menu_but).addClass('hide');
-	
+
 	});
 
 	// Close Menu
@@ -90,56 +90,56 @@ $(document).ready(function() {
 		$('.but-menu').addClass('menu-toggle');
 
 		$(this).parents('.section').fadeOut("slow");
-			
+
 		setTimeout(function() {
 			$('.page-background').removeClass('scale');
 			$('i.about-show, i.resume-show, i.portfolio-show, i.blog-show, i.contact-show').fadeIn("slow");
 		}, 400);
-			
+
 		setTimeout(function() {
 			$($menu_but).css({'z-index': '4'}).removeClass('hide');
  	 	}, 700);
 
 		$('.page-background').css({'z-index': '2'});
-		
+
 	});
 
-	// Home Full Page Layout 
+	// Home Full Page Layout
 	$('i.about-show').on('click', function() {
-			
+
 		setTimeout(function() {
 			$('i.about-show').fadeOut("fast");
 		}, 500);
-			
+
 		setTimeout(function() {
 			$('.about').fadeIn("slow");
 		}, 1000);
-			
+
 	});
 
-	// Resume Full Page Layout 
+	// Resume Full Page Layout
 	$('i.resume-show').on('click', function() {
-		
-		setTimeout(function() {	
+
+		setTimeout(function() {
 			$('i.resume-show').fadeOut("fast");
 		}, 500);
-			
+
 		setTimeout(function() {
 			$('.resume').fadeIn("slow");
 		}, 1000);
-		
+
 	});
 
-	// Portfolio Full Page Layout 
+	// Portfolio Full Page Layout
 	$('i.portfolio-show').on('click', function() {
-			
+
 		setTimeout(function() {
 			$('i.portfolio-show').fadeOut("fast");
 		}, 500);
-			
+
 		setTimeout(function() {
 			$('.portfolio').fadeIn("slow");
-			
+
 			/* ----- Isotope Portfolio ----- */
 			var $item = $(".portfolio-items"),
             	$filters = $('.portfolio-filter ul li');
@@ -153,56 +153,56 @@ $(document).ready(function() {
                 	filter: selector
             	});
         	});
-			
+
 		}, 1000);
-		
+
 	});
-	
+
 	// Blog Full Page Layout
 	$('i.blog-show').on('click', function() {
-			
+
 		setTimeout(function() {
 			$('i.blog-show').fadeOut("fast");
 		}, 500);
-			
+
 		setTimeout(function() {
 			$('.blog').fadeIn("slow");
 		}, 1000);
 	});
-	
+
 	// Contact Full Page Layout
 	$('i.contact-show').on('click', function(){
-			
+
 		setTimeout(function() {
 			$('i.contact-show').fadeOut("fast");
 		}, 500);
-			
+
 		setTimeout(function() {
 			$('.contact').fadeIn("slow");
 		}, 1000);
 	});
-	
+
 	/* -----------------------------------
 	      3. Portfolio Image Link
 	----------------------------------- */
 	$(".portfolio-items .image-link").magnificPopup({
 		type: "image"
 	});
-	
+
 	/* -----------------------------------
 	      4. Portfolio Video Link
 	----------------------------------- */
 	$(".portfolio-items .video-link").magnificPopup({
 		type: "iframe"
 	});
-	
+
 	/* -----------------------------------
 	      5. About Video Link
 	----------------------------------- */
 	$(".about .video .video-link").magnificPopup({
 		type: "iframe"
 	});
-	
+
 	/* -----------------------------------
 	      6. Testimonials OwlCarousel
 	----------------------------------- */
@@ -226,12 +226,12 @@ $(document).ready(function() {
             },
         },
     });
-	
+
 	/* -----------------------------------
 	      	7. YouTube Video
 	----------------------------------- */
 	$("#play-video").YTPlayer();
-	
+
 	/* -----------------------------------
 	    8. Validate Contact Form
 	----------------------------------- */
@@ -245,7 +245,7 @@ $(document).ready(function() {
             }
         })
     });
-	
+
     var input = $('.validate-input .input');
 
     $('.validate-form').on('submit',function(){
@@ -297,12 +297,12 @@ $(document).ready(function() {
         $(thisAlert).removeClass('alert-validate');
         $(thisAlert).find('.close-validate').remove();
     }
-	
+
 	/* Google Map Setup */
     if($('#map').length) {
         initMap();
      };
-	
+
 });
 
 /* -----------------------------------
@@ -315,7 +315,7 @@ function initMap() {
         cordinates = new google.maps.LatLng(latitude, longitude);
 
     var styles = [{"stylers":[{"saturation":-100},{"gamma":0.8},{"lightness":4},{"visibility":"on"}]},{"featureType":"landscape.natural","stylers":[{"visibility":"on"},{"color":"#5dff00"},{"gamma":4.97},{"lightness":-5},{"saturation":100}]}];
-	
+
         var mapOptions = {
         zoom: zoom,
         center: cordinates,

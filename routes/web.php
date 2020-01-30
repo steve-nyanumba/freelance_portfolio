@@ -21,5 +21,17 @@ Route::redirect('admin', 'admin/dashboard');
 
 Route::group(['prefix' => 'admin','middleware'=>'auth', 'namespace'=>'admin'], function () {
     Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
+    Route::resource('portfolio', 'PortfoliosController');
+    Route::resource('post', 'PostsController');
+    Route::resource('portfolio_category', 'PortCategoriesController');
+    Route::resource('post_categories', 'PostCategoriesController');
+    Route::resource('skills', 'SkillsController');
+    Route::resource('testimonials', 'TestimonialsController');
+    Route::resource('resume', 'ResumesController');
+    Route::resource('experience', 'ExperiencesController');
+    Route::resource('education', 'EducationsController');
+    Route::resource('contact', 'ContactsController');
+    Route::resource('about', 'AboutsController');
+
 });
 
