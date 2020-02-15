@@ -7,6 +7,7 @@ use App\PostCategory;
 use App\Post;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 
 
@@ -31,7 +32,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        $categories = PostCategory::all;
+        $categories = PostCategory::all();
         return view('admin.blog.create')->with('categories', $categories);
     }
 
@@ -43,28 +44,31 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+        $this->validate(
+            $request, [
             'category'=>'required',
             'title'=>'required',
-            'image'=>'mimes:jpeg,jpg,bmp|max:1500',
+            'image'=>'mimes:jpeg,jpg,bmp,png|max:1500',
             'content'=>'required'
-        ]);
+            ]
+        );
         $image = $request->file('image');
-        $slug = str_slug($request->title);
-        if(isset($image)){
+        $slug = Str::slug($request->title);
+        if (isset($image) ) {
             $currentDate = Carbon::now()->toDateString();
             $imagename = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
-
-            $path = $request->file('image')->storeAs('public/menus',$imagename);
-        }
-        else{
+            if (!file_exists('img/post') ) {
+                mkdir('img/post', 0777, true);
+            }
+            $image->move('img/post', $imagename);
+        } else {
             $imagename = 'default.png';
         }
 
         $post = new Post();
         $post->category = $request->category;
         $post->title = $request->title;
-        $post->image = $request->imagename;
+        $post->image = $imagename;
         $post->content = $request->content;
         $post->save();
         return redirect()->route('post.index')->with('successMsg', 'Blog Post Successfully added');
@@ -90,8 +94,8 @@ class PostsController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
-        $categories = Category::all();
-        return view('admin.blog.edit')->with('menu',$menu)->with('categories', $categories);
+        $categories = PostCategory::all();
+        return view('admin.blog.edit')->with('post',$post)->with('categories', $categories);
     }
 
     /**
@@ -110,7 +114,7 @@ class PostsController extends Controller
             'content'=>'required'
         ]);
         $image = $request->file('image');
-        $slug = str_slug($request->title);
+        $slug = Str::slug($request->title);
         $post = Post::find($id);
         if (isset($image)) {
             $currentDate = Carbon::now()->toDateString();
@@ -123,13 +127,12 @@ class PostsController extends Controller
 
         $post->category = $request->category;
         $post->title = $request->title;
-        $post->image = $request->imagename;
+        $post->image = $imagename;
         $post->content = $request->content;
         $post->save();
         return redirect()->route('post.index')->with('successMsg', 'Blog Post Successfully Updated');
     }
 
-    }
 
     /**
      * Remove the specified resource from storage.

@@ -17,7 +17,7 @@ class CreatePortfoliosTable extends Migration
             $table->bigIncrements('id');
             $table->text('category');
             $table->text('title');
-            $table->string('image', 191);
+            $table->string('image')->default('default.png');
             $table->timestamps();
         });
     }

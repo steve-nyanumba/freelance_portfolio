@@ -8,6 +8,7 @@ use App\Post;
 use App\Portfolio;
 use App\Contact;
 use App\Testimonial;
+use App\Social;
 
 class DashboardController extends Controller
 {
@@ -17,6 +18,7 @@ class DashboardController extends Controller
         $portfolios = Portfolio::all();
         $contacts = Contact::all();
         $testimonials = Testimonial::all();
-        return view('admin.dashboard')->with('posts', $posts)->with('portfolios', $portfolios)->with('contacts', $contacts)->with('testimonials', $testimonials);
+        $socials = Social::all();
+        return view('admin.dashboard')->with('posts', $posts)->with('portfolios', $portfolios)->with('contacts', $contacts)->with('testimonials', $testimonials)->with('socials', $socials);
     }
 }

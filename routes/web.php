@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('welcome');
+Route::get('/blog/{post}', 'HomeController@show')->name('blog');
+
+
 
 Auth::routes();
 
@@ -32,6 +33,8 @@ Route::group(['prefix' => 'admin','middleware'=>'auth', 'namespace'=>'admin'], f
     Route::resource('education', 'EducationsController');
     Route::resource('contact', 'ContactsController');
     Route::resource('about', 'AboutsController');
+    Route::resource('wallpaper', 'WallpapersController');
+    Route::resource('social', 'SocialsController');
 
 });
 

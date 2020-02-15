@@ -1,8 +1,8 @@
 <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="{{ asset('backend/img/logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+    <a href="/" class="brand-link">
+      <img src="{{ asset('backend/img/logo.png') }}" alt="Steve Nyanumba Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Admin</span>
     </a>
@@ -38,7 +38,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ Route('contact.index') }}"  @if (Request::is('admin/dashboard/Contacts'))
+            <a href="{{ Route('contact.index') }}"  @if (Request::is('admin/contact'))
                 class="nav-link active"
             @else
                 class="nav-link"
@@ -50,9 +50,12 @@
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
-            <a @if (Request::is('admin/dashboard/profile*'))
-                class="nav-link active"
+          <li class="nav-item has-treeview menu-closed">
+            <a
+            @if (Request::is('admin/about*'))
+            class="nav-link active"
+            @elseif (Request::is('admin/resume*'))
+            class="nav-link active"
             @else
                 class="nav-link"
             @endif>
@@ -62,9 +65,9 @@
                 {{-- <span class="right badge badge-danger">New</span> --}}
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview accent-blue">
               <li class="nav-item">
-                <a href="{{ Route('about.index') }}" @if (Request::is('admin/AboutMe*'))
+                <a href="{{ Route('about.index') }}" @if (Request::is('admin/about*'))
                 class="nav-link active"
             @else
                 class="nav-link"
@@ -73,26 +76,7 @@
                   <p>About Me</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="{{ Route('education.index') }}" @if (Request::is('admin/education*'))
-                class="nav-link active"
-            @else
-                class="nav-link"
-            @endif>
-                  <i class="fas fa-font nav-icon"></i>
-                  <p>Education</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ Route('experience.index') }}" @if (Request::is('admin/experience*'))
-                class="nav-link active"
-            @else
-                class="nav-link"
-            @endif>
-                  <i class="fas fa-tasks nav-icon"></i>
-                  <p>Experience</p>
-                </a>
-              </li>
+
               <li class="nav-item">
                 <a href="{{ Route('resume.index') }}" @if (Request::is('admin/Resume*'))
                 class="nav-link active"
@@ -103,21 +87,11 @@
                   <p>Resume</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="{{ Route('skills.store') }}" @if (Request::is('admin/Skills*'))
-                class="nav-link active"
-            @else
-                class="nav-link"
-            @endif>
-                  <i class="fas fa-wrench nav-icon"></i>
-                  <p>Skills</p>
-                </a>
-              </li>
             </ul>
           </li>
 
           <li class="nav-item">
-            <a href="#"@if (Request::is('admin/portfolio*'))
+            <a href="{{ Route('portfolio.index') }}"@if (Request::is('admin/portfolio*'))
                 class="nav-link active"
             @else
                 class="nav-link"
@@ -130,7 +104,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" @if (Request::is('admin/post'))
+            <a href="{{ Route('post.index') }}" @if (Request::is('admin/post'))
                 class="nav-link active"
             @else
                 class="nav-link"
@@ -143,7 +117,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" @if (Request::is('admin/testimonials'))
+            <a href="{{ Route('testimonials.index') }}" @if (Request::is('admin/testimonials'))
                 class="nav-link active"
             @else
                 class="nav-link"

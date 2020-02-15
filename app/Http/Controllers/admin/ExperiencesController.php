@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Experience;
 
 class ExperiencesController extends Controller
 {
@@ -24,7 +25,7 @@ class ExperiencesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.experiences.create');
     }
 
     /**
@@ -35,7 +36,22 @@ class ExperiencesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title'=>'required',
+            'start_year'=>'required',
+            'end_year'=>'required',
+            'company'=>'required',
+            'description'=>'required',
+        ]);
+
+        $experiences = new Experience;
+        $experiences->title = $request->title;
+        $experiences->start_year = $request->start_year;
+        $experiences->end_year = $request->end_year;
+        $experiences->company = $request->company;
+        $experiences->description = $request->description;
+        $experiences->save();
+        return redirect()->route('about.index')->with('SuccessMsg', 'Experiences Item successfully added');
     }
 
     /**
@@ -57,7 +73,9 @@ class ExperiencesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $experience = Experience::find($id);
+        return view('admin.experiences.edit')->with('experience', $experience);
+
     }
 
     /**
@@ -69,7 +87,22 @@ class ExperiencesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title'=>'required',
+            'start_year'=>'required',
+            'end_year'=>'required',
+            'company'=>'required',
+            'description'=>'required',
+        ]);
+
+        $experiences = Experience::find($id);
+        $experiences->title = $request->title;
+        $experiences->start_year = $request->start_year;
+        $experiences->end_year = $request->end_year;
+        $experiences->company = $request->company;
+        $experiences->description = $request->description;
+        $experiences->save();
+        return redirect()->route('about.index')->with('SuccessMsg', 'Experiences Item successfully added');
     }
 
     /**
@@ -80,6 +113,8 @@ class ExperiencesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $experience = Experience::find($id);
+        $experience->delete();
+        return redirect()->route('about.index')->with('successMsg', 'experience item successfully deleted.');
     }
 }
