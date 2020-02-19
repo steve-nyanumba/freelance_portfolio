@@ -46,11 +46,14 @@ class HomeController extends Controller
     {
         $post = Post::find($id);
         return view('blog')->with('post', $post);
+<<<<<<< HEAD
     }
 
     public function reveal($id)
     {
         $portfolio = Portfolio::find($id);
         return view('portfolio')->with('portfolio', $portfolio);
+=======
+>>>>>>> eef4cb3da2cec049015cb59f1f1142cb82f1a321
     }
 }

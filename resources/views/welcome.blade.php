@@ -593,7 +593,11 @@
 							<figcaption>
 								<h3>{{ $item->title }}</h3>
 								<p>{{ $item->category }}</p><i class="fas fa-image"></i>
+<<<<<<< HEAD
 								<a href="{{ route('portfolio' , $item->id )}}"></a>
+=======
+								<a class="image-link" href="/img/portfolio/{{ ($item->image) }}"></a>
+>>>>>>> eef4cb3da2cec049015cb59f1f1142cb82f1a321
 							</figcaption>
 						</figure>
 					</div>
@@ -629,7 +633,11 @@
 							<h4><a href="single-blog.html">{{ $item->title }}</a></h4>
 							{!! Str::limit($item->content, 30) !!}
 							<div class="blog-btn">
+<<<<<<< HEAD
 								<a href="{{ route('blog',$item->id) }}" class="btn-st">Read More</a>
+=======
+								<a href="single-blog.html" class="btn-st">Read More</a>
+>>>>>>> eef4cb3da2cec049015cb59f1f1142cb82f1a321
 							</div>
 						</div>
 					</div>
