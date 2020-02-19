@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Skill;
 
 class SkillsController extends Controller
 {
@@ -24,7 +25,7 @@ class SkillsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.skills.create');
     }
 
     /**
@@ -35,7 +36,18 @@ class SkillsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'skill'=>'required',
+            'level'=>'required',
+
+        ]);
+        $skills = new Skill;
+        $skills->skill = $request->skill;
+        $skills->level = $request->level;
+        $skills->save();
+        return redirect()->route('about.index')->with('successMsg', 'Skill item successfully added');
+
+
     }
 
     /**
@@ -57,7 +69,8 @@ class SkillsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $skill = Skill::find($id);
+        return view('admin.skills.edit')->with('skill', $skill);
     }
 
     /**
@@ -69,7 +82,16 @@ class SkillsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'skill'=>'required',
+            'level'=>'required',
+
+        ]);
+        $skill = Skill::find($id);
+        $skill->skill = $request->skill;
+        $skill->level = $request->level;
+        $skill->save();
+        return redirect()->route('about.index')->with('successMsg', 'Skill item successfully Updated');
     }
 
     /**
@@ -80,6 +102,9 @@ class SkillsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $skill = Skill::find($id);
+        $skill->delete();
+        return redirect()->route('about.index')->with('successMsg', 'Skill item successfully deleted');
+
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Education;
 
 class EducationsController extends Controller
 {
@@ -24,7 +25,7 @@ class EducationsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.education.create');
     }
 
     /**
@@ -35,7 +36,24 @@ class EducationsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title'=>'required',
+            'start_year'=>'required',
+            'end_year'=>'required',
+            'institution'=>'required',
+            'description'=>'required',
+        ]);
+
+        $education = new Education;
+        $education->title = $request->title;
+        $education->start_year = $request->start_year;
+        $education->end_year = $request->end_year;
+        $education->institution = $request->institution;
+        $education->description = $request->description;
+        $education->save();
+        return redirect()->route('about.index')->with('SuccessMsg', 'Education Item successfully added');
+
+
     }
 
     /**
@@ -57,7 +75,8 @@ class EducationsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $education = Education::find($id);
+        return view('admin.education.edit')->with('education', $education);
     }
 
     /**
@@ -69,7 +88,22 @@ class EducationsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title'=>'required',
+            'start_year'=>'required',
+            'end_year'=>'required',
+            'institution'=>'required',
+            'description'=>'required',
+        ]);
+
+        $education = Education::find($id);
+        $education->title = $request->title;
+        $education->start_year = $request->start_year;
+        $education->end_year = $request->end_year;
+        $education->institution = $request->institution;
+        $education->description = $request->description;
+        $education->save();
+        return redirect()->route('about.index')->with('SuccessMsg', 'Education Item successfully edited');
     }
 
     /**
@@ -80,6 +114,8 @@ class EducationsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $education = Education::find($id);
+        $education->delete();
+        return view('admin.about.index')->with('successMsg', 'Education Item Successfully Deleted');
     }
 }

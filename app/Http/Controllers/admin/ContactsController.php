@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Contact;
 
 class ContactsController extends Controller
 {
@@ -14,7 +15,8 @@ class ContactsController extends Controller
      */
     public function index()
     {
-        return view('admin.contact.index');
+        $contacts = Contact::all();
+        return view('admin.contact.index')->with('contacts', $contacts);
     }
 
     /**
@@ -35,7 +37,20 @@ class ContactsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'full_name' =>'required',
+            'email' => 'required',
+            'phone_number' => 'required',
+            'country_code' => 'required'
+        ]);
+
+        $contact = new Contact();
+        $contact->full_name = $request->full_name;
+        $contact->email = $request->email;
+        $contact->phone_number = $request->phone_number;
+        $contact->country_code = $request->country_code;
+        $contact->save();
+        return redirect()->route('welcome')->with('successMsg', 'You have sent your contact details. Expect a call from Steven Soon.');
     }
 
     /**

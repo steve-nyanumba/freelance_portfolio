@@ -31,17 +31,27 @@
 			<div class="loading">
 				<div class="circle"></div>
 				<div class="text-loading">
-					<span data-text-preloader="L" class="letters">L</span>
+					<span data-text-preloader="S" class="letters">S</span>
+					<span data-text-preloader="T" class="letters">T</span>
 					<span data-text-preloader="E" class="letters">E</span>
-					<span data-text-preloader="I" class="letters">I</span>
-					<span data-text-preloader="L" class="letters">L</span>
+					<span data-text-preloader="V" class="letters">V</span>
+					<span data-text-preloader="E" class="letters">E</span>
+                </div>
+                <div class="text-loading">
+					<span data-text-preloader="N" class="letters">N</span>
+					<span data-text-preloader="Y" class="letters">Y</span>
+					<span data-text-preloader="A" class="letters">A</span>
+					<span data-text-preloader="N" class="letters">N</span>
+					<span data-text-preloader="U" class="letters">U</span>
+					<span data-text-preloader="M" class="letters">M</span>
+					<span data-text-preloader="B" class="letters">B</span>
 					<span data-text-preloader="A" class="letters">A</span>
 				</div>
 			</div>
 		</div>
 
 		<!-- Home Section -->
-		<section class="home" style="background-image: url('{{ asset('frontend/img/home-bg.jpg') }}')">
+		<section class="home" style="background-image: url('{{ asset('img/background/background.jpg') }}')">
 
 			<!-- Banner -->
 			<div class="banner">
@@ -56,7 +66,8 @@
 						<b>Freelancer</b>
 					</span>
 				</p>
-			</div>
+            </div>
+            @include('layouts.partial.notify')
 
 			<!-- Menu -->
 			<div class="menu">
@@ -87,26 +98,28 @@
 			</div>
 
 			<!-- Language -->
-			<div class="lang">
+			{{-- <div class="lang">
                 <ul>
                     <li><a href="#" class="active">eng</a></li>
                     <li><a href="#">rus</a></li>
                 </ul>
-            </div>
+            </div> --}}
 
 			<!-- Social -->
 			<div class="social">
             	<ul>
-                	<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                	<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                	<li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                	<li><a href="https://facebook.com/KingStevenNOS"><i class="fab fa-facebook-f"></i></a></li>
+                	<li><a href="https://twitter.com/KingStevenNOS"><i class="fab fa-twitter"></i></a></li>
+                	<li><a href="https://www.instagram.com/steven_nyanumba/"><i class="fab fa-instagram"></i></a></li>
 
             	</ul>
         	</div>
 
 		</section>
 
-		<!-- About Section -->
+        <!-- About Section -->
+        @foreach ($abouts as $item)
+
 		<section class="about section" data-simplebar>
 			<div class="container">
 				<div class="header-page mt-70">
@@ -124,19 +137,19 @@
 							<div class="row">
 								<div class="col-lg-4 col-sm-4">
 									<div class="photo pt-10">
-										<img alt="" src="{{ asset('frontend/img/user-photo.jpg') }}">
+										<img alt="" src="/img/about/{{ ($item->image) }}">
 									</div>
 								</div>
 								<div class="col-lg-8 col-sm-8">
-									<h4>Alex Smith</h4>
+									<h4>{{ $item->name }}</h4>
 									<div class="loc">
-										<i class="fas fa-map-marked-alt"></i> New York, USA
+										<i class="fas fa-map-marked-alt"></i> {{ $item->city }}, {{ $item->country }}
 									</div>
-									<p>I'm 23 years old creative web designer, specializing in User Interface Design and Development. I build clean, appealing, and functional interfaces which comply with the latest web standards. Through my years of experience as a professional web/graphic designer I have acquired the skills and knowledge necessary to make your project a success!</p>
+									{!! $item->description !!}
 								</div>
 							</div>
 							<div class="btn-about">
-								<a href="#" class="btn-st">Download CV</a>
+								<a href="/docs/about/{{ ($item->cv) }}" class="btn-st">Download CV</a>
 							</div>
 						</div>
 					</div>
@@ -146,7 +159,7 @@
 						<div class="box">
 							<h4 class="text-center">Video Presentation</h4>
 							<div class="video">
-								<a class="video-play video-link" href="https://www.youtube.com/watch?v=QBEnXQqbKUI"></a>
+								<a class="video-play video-link" href="{{ $item->video }}"></a>
 								<div class="video-bg">
 									<img alt="#" src="{{ asset('frontend/img/video-bg.jpg') }}">
 								</div>
@@ -166,45 +179,21 @@
 						</div>
 					</div>
 
-					<!-- Service Item -->
-					<div class="col-lg-6 col-sm-6">
-						<div class="service box mb-40">
-							<i class="fas fa-desktop"></i>
-							<h4>Web Design</h4>
-							<p>Lorem Ipsum is simply dummy text of the Lorem has been the industry's standard dummy text ever.</p>
-						</div>
-					</div>
+                    <!-- Service Item -->
+                    @foreach ($skills as $item)
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="service box mb-40">
+                            <i class="fas fa-cogs"></i>
+                            <h4>{{ $item->skill }}</h4>
+                            <p></p>
+                        </div>
+                    </div>
+                    @endforeach
 
-					<!-- Service Item -->
-					<div class="col-lg-6 col-sm-6">
-						<div class="service box mb-40">
-							<i class="fas fa-cogs"></i>
-							<h4>Web Development</h4>
-							<p>Lorem Ipsum is simply dummy text of the Lorem has been the industry's standard dummy text ever.</p>
-						</div>
-					</div>
-
-					<!-- Service Item -->
-					<div class="col-lg-6 col-sm-6">
-						<div class="service box mb-40">
-							<i class="fas fa-mobile-alt"></i>
-							<h4>Responsive Design</h4>
-							<p>Lorem Ipsum is simply dummy text of the Lorem has been the industry's standard dummy text ever.</p>
-						</div>
-					</div>
-
-					<!-- Service Item -->
-					<div class="col-lg-6 col-sm-6">
-						<div class="service box mb-40">
-							<i class="fas fa-medkit"></i>
-							<h4>quick Support</h4>
-							<p>Lorem Ipsum is simply dummy text of the Lorem has been the industry's standard dummy text ever.</p>
-						</div>
-					</div>
 				</div>
 				<!-- Service Row End -->
 
-				<!-- Testimonial Row Start -->
+				{{-- <!-- Testimonial Row Start -->
 				<div class="row testimonial mt-60">
 
 					<!-- Header Block -->
@@ -274,9 +263,9 @@
 						</div>
 					</div>
 				</div>
-				<!-- Testimonial Row End -->
+				<!-- Testimonial Row End --> --}}
 
-				<!-- Price Row Start -->
+				{{-- <!-- Price Row Start -->
 				<div class="row mt-100 mb-60">
 
 					<!-- Header Block -->
@@ -370,10 +359,11 @@
 						</div>
 					</div>
 				</div>
-				<!-- Price Row End -->
+				<!-- Price Row End --> --}}
 			</div>
 		</section>
 
+        @endforeach
 		<!-- Resume Section -->
 		<section class="resume section" data-simplebar>
 			<div class="container">
@@ -403,32 +393,16 @@
 						<div class="experience box">
 							<div class="bord-l">
 
-								<!-- Experience Item -->
-								<div class="item">
+                                <!-- Experience Item -->
+                                @foreach ($experiences as $item)
+                                <div class="item">
 									<div class="main">
-										<h4>Web Design</h4>
-										<p><i class="far fa-calendar-alt"></i>2012 - 2014 | Сompany Inc</p>
+										<h4>{{ $item->title }}</h4>
+										<p><i class="far fa-calendar-alt"></i>{{ $item->start_year }} - {{ $item->end_year }} | {{ $item->company }} </p>
 									</div>
-									<p>Work experience is essential for getting a job. Whether it's a short work placement or a longer internship, work experience is always viewed favourably by employers and can help you decide your future career.</p>
+									{!! $item->description !!}
 								</div>
-
-								<!-- Experience Item -->
-								<div class="item">
-									<div class="main">
-										<h4>Fornt-End Developer</h4>
-										<p><i class="far fa-calendar-alt"></i>2014 - 2015 | Сompany Inc</p>
-									</div>
-									<p>Work experience is essential for getting a job. Whether it's a short work placement or a longer internship, work experience is always viewed favourably by employers and can help you decide your future career.</p>
-								</div>
-
-								<!-- Experience Item -->
-								<div class="item">
-									<div class="main">
-										<h4>Web Development</h4>
-										<p><i class="far fa-calendar-alt"></i>2015 - 2019 | Сompany Inc</p>
-									</div>
-									<p>Work experience is essential for getting a job. Whether it's a short work placement or a longer internship, work experience is always viewed favourably by employers and can help you decide your future career.</p>
-								</div>
+                                @endforeach
 							</div>
 						</div>
 					</div>
@@ -445,32 +419,17 @@
 						<div class="experience box">
 							<div class="bord-l">
 
-								<!-- Education Item -->
-								<div class="item">
+                                <!-- Education Item -->
+                                @foreach ($educations as $item)
+                                <div class="item">
 									<div class="main">
-										<h4>Phd</h4>
-										<p><i class="far fa-calendar-alt"></i>2011 - 2013 | Computer Science</p>
-									</div>
-									<p>Work experience is essential for getting a job. Whether it's a short work placement or a longer internship, work experience is always viewed favourably by employers and can help you decide your future career.</p>
+										<h4>{{ $item->title }}</h4>
+										<p><i class="far fa-calendar-alt"></i>{{ $item->start_year }} - {{ $item->end_year }} | {{ $item->institution }}</p>
+                                    </div>
+                                    {!! $item->description !!}
 								</div>
+                                @endforeach
 
-								<!-- Education Item -->
-								<div class="item">
-									<div class="main">
-										<h4>Post Graduation</h4>
-										<p><i class="far fa-calendar-alt"></i>2013 - 2016 | Computer Science</p>
-									</div>
-									<p>Work experience is essential for getting a job. Whether it's a short work placement or a longer internship, work experience is always viewed favourably by employers and can help you decide your future career.</p>
-								</div>
-
-								<!-- Education Item -->
-								<div class="item">
-									<div class="main">
-										<h4>Gradution</h4>
-										<p><i class="far fa-calendar-alt"></i>2016 - 2018 | Computer Science</p>
-									</div>
-									<p>Work experience is essential for getting a job. Whether it's a short work placement or a longer internship, work experience is always viewed favourably by employers and can help you decide your future career.</p>
-								</div>
 							</div>
 						</div>
 					</div>
@@ -499,75 +458,43 @@
 					<div class="row">
 						<div class="col-lg-6 col-sm-6">
 
-							<!-- Skill Item -->
-							<div class="skill-item">
-								<h4 class="progress-title">HTML5</h4>
-								<div class="progress">
-									<div class="progress-bar" style="width:98%">
-										<div class="progress-value">98%</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Skill Item -->
-							<div class="skill-item">
-								<h4 class="progress-title">CSS3</h4>
-								<div class="progress">
-									<div class="progress-bar" style="width:85%">
-										<div class="progress-value">85%</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Skill Item -->
-							<div class="skill-item">
-								<h4 class="progress-title">JavaScript</h4>
-								<div class="progress">
-									<div class="progress-bar" style="width:90%">
-										<div class="progress-value">90%</div>
-									</div>
-								</div>
-							</div>
+                            <!-- Skill Item -->
+                            @foreach ($skills as $item)
+                                @if ($item->id % 2 == 0)
+                                    <div class="skill-item">
+                                        <h4 class="progress-title">{{ $item->skill }}</h4>
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width:{{ ($item->level) }}%">
+                                                <div class="progress-value">{{ $item->level }}%</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
 						</div>
 
 						<div class="col-lg-6 col-sm-6">
 
-							<!-- Skill Item -->
-							<div class="skill-item">
-								<h4 class="progress-title">UI/UX designer</h4>
-								<div class="progress">
-									<div class="progress-bar" style="width:77%">
-										<div class="progress-value">77%</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Skill Item -->
-							<div class="skill-item">
-								<h4 class="progress-title">Photoshop</h4>
-								<div class="progress">
-									<div class="progress-bar" style="width:85%">
-										<div class="progress-value">85%</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Skill Item -->
-							<div class="skill-item">
-								<h4 class="progress-title">WordPress</h4>
-								<div class="progress">
-									<div class="progress-bar" style="width:88%">
-										<div class="progress-value">88%</div>
-									</div>
-								</div>
-							</div>
+                            <!-- Skill Item -->
+                            @foreach ($skills as $item)
+                                @if ($item->id%2==1)
+                                    <div class="skill-item">
+                                        <h4 class="progress-title">{{ $item->skill }}</h4>
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width:{{ ($item->level) }}%">
+                                                <div class="progress-value">{{ $item->level }}%</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
 						</div>
 					</div>
 				</div>
 				<!-- Skills Row End -->
 
 				<!-- Work Process Row Start -->
-				<div class="row mt-100">
+				{{-- <div class="row mt-100">
 
 					<!-- Header Block -->
 					<div class="col-md-12">
@@ -575,9 +502,9 @@
 							<h3>My Working Process</h3>
 						</div>
 					</div>
-				</div>
+				</div> --}}
 
-				<div class="box work-process mb-100">
+				{{-- <div class="box work-process mb-100">
 					<div class="row">
 						<div class="col-lg-4 col-sm-12 ltr">
 
@@ -625,7 +552,8 @@
 							</div>
 						</div>
 					</div>
-				</div>
+                </div> --}}
+
 				<!-- Work Process Row End -->
 			</div>
 		</section>
@@ -644,10 +572,11 @@
 				<div class="row mt-100 mob-mt">
 					<div class="col-lg-12 col-sm-12 portfolio-filter">
 						<ul>
-							<li class="active" data-filter="*">All</li>
-							<li data-filter=".brand">Brand</li>
-							<li data-filter=".design">Design</li>
-							<li data-filter=".graphic">Graphic</li>
+                            <li class="active" data-filter="*">All</li>
+                            @foreach ($categories as $item)
+                            <li data-filter=".{{ Str::slug($item->category) }}">{{ $item->category }}</li>
+                            @endforeach
+
 						</ul>
 					</div>
 				</div>
@@ -656,113 +585,19 @@
 				<!-- Portfolio Item Row Start -->
 				<div class="row portfolio-items mt-100 mb-100">
 
-					<!-- Portfolio Item -->
-					<div class="item col-lg-4 col-sm-6 graphic">
+                    <!-- Portfolio Item -->
+                    @foreach ($portfolios as $item)
+                    <div class="item col-lg-4 col-sm-6 {{ Str::slug($item->category) }}">
 						<figure>
-							<img alt="" src="{{ asset('frontend/img/portfolio/img-1.jpg') }}">
+							<img alt="" src="/img/portfolio/{{ $item->image }}">
 							<figcaption>
-								<h3>Project Name</h3>
-								<p>Graphic</p><i class="fas fa-image"></i>
-								<a class="image-link" href="{{ asset('frontend/img/portfolio/img-1.jpg') }}"></a>
+								<h3>{{ $item->title }}</h3>
+								<p>{{ $item->category }}</p><i class="fas fa-image"></i>
+								<a href="{{ route('portfolio' , $item->id )}}"></a>
 							</figcaption>
 						</figure>
 					</div>
-
-					<!-- Portfolio Item -->
-					<div class="item col-lg-4 col-sm-6 design">
-						<figure>
-							<img alt="" src="{{ asset('frontend/img/portfolio/img-2.jpg') }}">
-							<figcaption>
-								<h3>Project Name</h3>
-								<p>Design</p><i class="fas fa-image"></i>
-								<a class="image-link" href="{{ asset('frontend/img/portfolio/img-2.jpg') }}"></a>
-							</figcaption>
-						</figure>
-					</div>
-
-					<!-- Portfolio Item -->
-					<div class="item col-lg-4 col-sm-6 brand">
-						<figure>
-							<img alt="" src="{{ asset('frontend/img/portfolio/img-3.jpg') }}">
-							<figcaption>
-								<h3>Project Name</h3>
-								<p>Graphic</p><i class="fas fa-video"></i>
-								<a class="video-link" href="https://www.youtube.com/watch?v=k_okcNVZqqI"></a>
-							</figcaption>
-						</figure>
-					</div>
-
-					<!-- Portfolio Item -->
-					<div class="item col-lg-4 col-sm-6 graphic">
-						<figure>
-							<img alt="" src="{{ asset('frontend/img/portfolio/img-4.jpg') }}">
-							<figcaption>
-								<h3>Project Name</h3>
-								<p>Design</p><i class="fas fa-image"></i>
-								<a class="image-link" href="{{ asset('frontend/img/portfolio/img-4.jpg') }}"></a>
-							</figcaption>
-						</figure>
-					</div>
-
-					<!-- Portfolio Item -->
-					<div class="item col-lg-4 col-sm-6 design">
-						<figure>
-							<img alt="" src="{{ asset('frontend/img/portfolio/img-5.jpg') }}">
-							<figcaption>
-								<h3>Project Name</h3>
-								<p>Design</p><i class="fas fa-video"></i>
-								<a class="video-link" href="https://www.youtube.com/watch?v=k_okcNVZqqI"></a>
-							</figcaption>
-						</figure>
-					</div>
-
-					<!-- Portfolio Item -->
-					<div class="item col-lg-4 col-sm-6 brand">
-						<figure>
-							<img alt="" src="{{ asset('frontend/img/portfolio/img-6.jpg') }}">
-							<figcaption>
-								<h3>Project Name</h3>
-								<p>Brand</p><i class="fas fa-image"></i>
-								<a class="image-link" href="{{ asset('frontend/img/portfolio/img-6.jpg') }}"></a>
-							</figcaption>
-						</figure>
-					</div>
-
-					<!-- Portfolio Item -->
-					<div class="item col-lg-4 col-sm-6 graphic">
-						<figure>
-							<img alt="" src="{{ asset('frontend/img/portfolio/img-7.jpg') }}">
-							<figcaption>
-								<h3>Project Name</h3>
-								<p>Brand</p><i class="fas fa-image"></i>
-								<a class="image-link" href="{{ asset('frontend/img/portfolio/img-7.jpg') }}"></a>
-							</figcaption>
-						</figure>
-					</div>
-
-					<!-- Portfolio Item -->
-					<div class="item col-lg-4 col-sm-6 design">
-						<figure>
-							<img alt="" src="{{ asset('frontend/img/portfolio/img-8.jpg') }}">
-							<figcaption>
-								<h3>Project Name</h3>
-								<p>Brand</p><i class="fas fa-image"></i>
-								<a class="image-link" href="{{ asset('frontend/img/portfolio/img-8.jpg') }}"></a>
-							</figcaption>
-						</figure>
-					</div>
-
-					<!-- Portfolio Item -->
-					<div class="item col-lg-4 col-sm-6 brand">
-						<figure>
-							<img alt="" src="{{ asset('frontend/img/portfolio/img-9.jpg') }}">
-							<figcaption>
-								<h3>Project Name</h3>
-								<p>Graphic</p><i class="fas fa-image"></i>
-								<a class="image-link" href="{{ asset('frontend/img/portfolio/img-9.jpg') }}"></a>
-							</figcaption>
-						</figure>
-					</div>
+                    @endforeach
 				</div>
 				<!-- Portfolio Item Row End -->
 			</div>
@@ -780,119 +615,25 @@
 				<!-- Blog Row Start -->
 				<div class="row mt-100 mb-50 mob-mt">
 
-					<!-- Blog Item -->
-					<div class="col-lg-4 col-sm-6">
+                    <!-- Blog Item -->
+                    @foreach ($posts as $item)
+                    <div class="col-lg-4 col-sm-6">
 						<div class="blog-item">
 							<div class="thumbnail">
-								<span class="date">Feb 09, 2019</span>
-								<a href="single-blog.html"><img alt="" src="{{ asset('frontend/img/blog/img-1.jpg') }}"></a>
+								<span class="date">{{ $item->created_at }}</span>
+								<a href="{{ route('blog',$item->id) }}"><img alt="" src="/img/post/{{ ($item->image) }}"></a>
 							</div>
 							<div class="meta">
-								<span class="aut">Posted By <b>Alex Smith</b></span>
-								<span class="cat"><i class="fas fa-hashtag"></i>Design</span>
+								<span class="cat"><i class="fas fa-hashtag"></i>{{ $item->category }}</span>
 							</div>
-							<h4><a href="single-blog.html">Road to success</a></h4>
-							<p>Tower Hamlets or mass or members of propaganda bananas real estate. However, a large and a mourning, vel euismod.</p>
+							<h4><a href="single-blog.html">{{ $item->title }}</a></h4>
+							{!! Str::limit($item->content, 30) !!}
 							<div class="blog-btn">
-								<a href="single-blog.html" class="btn-st">Read More</a>
+								<a href="{{ route('blog',$item->id) }}" class="btn-st">Read More</a>
 							</div>
 						</div>
 					</div>
-
-					<!-- Blog Item -->
-					<div class="col-lg-4 col-sm-6">
-						<div class="blog-item">
-							<div class="thumbnail">
-								<span class="date">Feb 09, 2019</span>
-								<a href="single-blog.html"><img alt="" src="{{ asset('frontend/img/blog/img-2.jpg') }}"></a>
-							</div>
-							<div class="meta">
-								<span class="aut">Posted By <b>Alex Smith</b></span>
-								<span class="cat"><i class="fas fa-hashtag"></i>Design</span>
-							</div>
-							<h4><a href="single-blog.html">Road to success</a></h4>
-							<p>Tower Hamlets or mass or members of propaganda bananas real estate. However, a large and a mourning, vel euismod.</p>
-							<div class="blog-btn">
-								<a href="single-blog.html" class="btn-st">Read More</a>
-							</div>
-						</div>
-					</div>
-
-					<!-- Blog Item -->
-					<div class="col-lg-4 col-sm-6">
-						<div class="blog-item">
-							<div class="thumbnail">
-								<span class="date">Feb 09, 2019</span>
-								<a href="single-blog.html"><img alt="" src="{{ asset('frontend/img/blog/img-3.jpg') }}"></a>
-							</div>
-							<div class="meta">
-								<span class="aut">Posted By <b>Alex Smith</b></span>
-								<span class="cat"><i class="fas fa-hashtag"></i>Design</span>
-							</div>
-							<h4><a href="single-blog.html">Road to success</a></h4>
-							<p>Tower Hamlets or mass or members of propaganda bananas real estate. However, a large and a mourning, vel euismod.</p>
-							<div class="blog-btn">
-								<a href="single-blog.html" class="btn-st">Read More</a>
-							</div>
-						</div>
-					</div>
-
-					<!-- Blog Item -->
-					<div class="col-lg-4 col-sm-6">
-						<div class="blog-item">
-							<div class="thumbnail">
-								<span class="date">Feb 09, 2019</span>
-								<a href="single-blog.html"><img alt="" src="{{ asset('frontend/img/blog/img-4.jpg') }}"></a>
-							</div>
-							<div class="meta">
-								<span class="aut">Posted By <b>Alex Smith</b></span>
-								<span class="cat"><i class="fas fa-hashtag"></i>Design</span>
-							</div>
-							<h4><a href="single-blog.html">Road to success</a></h4>
-							<p>Tower Hamlets or mass or members of propaganda bananas real estate. However, a large and a mourning, vel euismod.</p>
-							<div class="blog-btn">
-								<a href="single-blog.html" class="btn-st">Read More</a>
-							</div>
-						</div>
-					</div>
-
-					<!-- Blog Item -->
-					<div class="col-lg-4 col-sm-6">
-						<div class="blog-item">
-							<div class="thumbnail">
-								<span class="date">Feb 09, 2019</span>
-								<a href="single-blog.html"><img alt="" src="{{ asset('frontend/img/blog/img-5.jpg') }}"></a>
-							</div>
-							<div class="meta">
-								<span class="aut">Posted By <b>Alex Smith</b></span>
-								<span class="cat"><i class="fas fa-hashtag"></i>Design</span>
-							</div>
-							<h4><a href="single-blog.html">Road to success</a></h4>
-							<p>Tower Hamlets or mass or members of propaganda bananas real estate. However, a large and a mourning, vel euismod.</p>
-							<div class="blog-btn">
-								<a href="single-blog.html" class="btn-st">Read More</a>
-							</div>
-						</div>
-					</div>
-
-					<!-- Blog Item -->
-					<div class="col-lg-4 col-sm-6">
-						<div class="blog-item">
-							<div class="thumbnail">
-								<span class="date">Feb 09, 2019</span>
-								<a href="single-blog.html"><img alt="" src="{{ asset('frontend/img/blog/img-6.jpg') }}"></a>
-							</div>
-							<div class="meta">
-								<span class="aut">Posted By <b>Alex Smith</b></span>
-								<span class="cat"><i class="fas fa-hashtag"></i>Design</span>
-							</div>
-							<h4><a href="single-blog.html">Road to success</a></h4>
-							<p>Tower Hamlets or mass or members of propaganda bananas real estate. However, a large and a mourning, vel euismod.</p>
-							<div class="blog-btn">
-								<a href="single-blog.html" class="btn-st">Read More</a>
-							</div>
-						</div>
-					</div>
+                    @endforeach
 				</div>
 				<!--Blog Row End-->
 			</div>
@@ -911,11 +652,12 @@
 					<div class="col-lg-8 col-sm-12">
 
 						<!--Form Start-->
-						<form class="form-wrap validate-form">
+                        <form class="form-wrap validate-form" action="{{ Route('contact.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
 
 							<!--Full name-->
 							<div class="validate-input">
-								<input id="name" class="input" type="text" name="name" placeholder="Full name">
+								<input id="name" class="input" type="text" name="full_name" placeholder="Full name" required>
 								<span class="focus-input"></span>
 								<label class="label-input" for="name">
 									<i class="fas fa-user"></i>
@@ -924,24 +666,39 @@
 
 							<!--Email-->
 							<div class="validate-input">
-								<input id="email" class="input" type="text" name="email" placeholder="example@example.com">
+								<input id="email" class="input" type="text" name="email" placeholder="example@example.com" required>
 								<span class="focus-input"></span>
 								<label class="label-input" for="email">
 									<i class="fas fa-envelope"></i>
+								</label>
+                            </div>
+
+                            <!--Phone Number-->
+							<div class="validate-input">
+								<input id="email" class="input" type="text" name="phone_number" placeholder="0712 345 678" required>
+								<span class="focus-input"></span>
+								<label class="label-input" for="email">
+									<i class="fas fa-phone-square"></i>
+								</label>
+                            </div>
+
+                            <!--Country Code-->
+							<div class="validate-input">
+								<input id="country_code" class="input" type="number" name="country_code" placeholder="254" required>
+								<span class="focus-input"></span>
+								<label class="label-input" for="email">
+									<i class="fas fa-map-marked"></i>
 								</label>
 							</div>
 
 							<!--Massage-->
 							<div class="validate-input">
-								<textarea id="message" class="input" name="message"  placeholder="Your comments..."></textarea>
+								<input type="submit" class="btn-st" value="Submit">
 								<span class="focus-input"></span>
-								<label class="label-input comment" for="message">
-									<i class="fas fa-comment"></i>
-								</label>
 							</div>
-							<div class="form-btn">
+							{{-- <div class="form-btn">
 								<a href="#" class="btn-st">Talk to A Human</a>
-							</div>
+							</div> --}}
 						</form>
 						<!--Form End-->
 					</div>
@@ -957,7 +714,7 @@
                             		<div class="info-item">
                                			<span class="icon"><i class="fas fa-paper-plane"></i></span>
                                			<h4>Email:</h4>
-										<p><a href="mailto:example@example.com">example@example.com</a></p>
+										<p><a href="mailto:reach@stevenyanumba.com">reach@stevenyanumba.com</a></p>
                             		</div>
 								</div>
 
@@ -966,7 +723,9 @@
                             		<div class="info-item">
                                		<span class="icon"><i class="fas fa-map-marker-alt"></i></span>
                                			<h4>Addres</h4>
-										<p>123 Lorem Ipsum, USA</p>
+										<p>1st Floor, East African Growers Building,
+										Kijabe Street.</p>
+										<p>P.O.BOX 79051-00400, NBI</p>
                             		</div>
 								</div>
 
@@ -982,9 +741,11 @@
 						</div>
 						<!--Contact Info Row End-->
 					</div>
-				</div>
+                </div>
 
-				<!--Google Map Start-->
+
+
+				{{-- <!--Google Map Start-->
 				<div class="google-map box mt-100 mb-100">
 					<div class="row">
 						<div class="col-lg-12">
@@ -992,10 +753,11 @@
 						</div>
 					</div>
 				</div>
-				<!--Google Map End-->
+				<!--Google Map End--> --}}
 
 			</div>
-		</section>
+        </section>
+
 
         <script src="{{ asset('frontend/js/jquery.min.js') }}"></script>
 		<script src="{{ asset('frontend/js/isotope.pkgd.min.js') }}"></script>

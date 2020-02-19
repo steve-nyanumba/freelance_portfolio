@@ -4,6 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\PortCategory;
+use Carbon\Carbon;
 
 class PortCategoriesController extends Controller
 {
@@ -24,7 +26,7 @@ class PortCategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.portCategories.create');
     }
 
     /**
@@ -35,7 +37,14 @@ class PortCategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'category'=> 'required'
+        ]);
+
+        $portCat = new PortCategory;
+        $portCat->category = $request->category;
+        $portCat->save();
+        return redirect()->route('portfolio.index')->with('successMsg', 'Your Category has been Added.');
     }
 
     /**
@@ -69,7 +78,14 @@ class PortCategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'category'=> 'required'
+        ]);
+
+        $portCat = PortCategory::find($id);
+        $portCat->category = $request->category;
+        $portCat->save();
+        return redirect()->route('portfolio.index')->with('successMsg', 'Your Category has been Updated.');
     }
 
     /**
@@ -80,6 +96,8 @@ class PortCategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $portCat = PortCategory::find($id);
+        $portCat->delete();
+        return redirect()->route('portfolio.index')->with('successMsg', 'Your Category has been deleted.');
     }
 }

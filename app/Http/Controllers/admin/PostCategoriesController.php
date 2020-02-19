@@ -4,6 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\PostCategory;
+use App\Post;
 
 class PostCategoriesController extends Controller
 {
@@ -24,7 +26,7 @@ class PostCategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.postCategories.create');
     }
 
     /**
@@ -35,7 +37,14 @@ class PostCategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'category'=> 'required'
+        ]);
+
+        $postCat = new PostCategory;
+        $postCat->category = $request->category;
+        $postCat->save();
+        return redirect()->route('post.index')->with('successMsg', 'Your Category has been Added.');
     }
 
     /**
@@ -69,7 +78,14 @@ class PostCategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $this->validate($request, [
+            'category'=> 'required'
+        ]);
+
+        $postCat = PostCategory::find($id);
+        $postCat->category = $request->category;
+        $postCat->save();
+        return redirect()->route('post.index')->with('successMsg', 'Your Category has been Updated.');
     }
 
     /**
@@ -80,6 +96,8 @@ class PostCategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $postCat->PostCategory::find($id);
+        $postCat->delete();
+        return redirect()->back()->with('SuccessMsg', 'Your Category has Successfully been deleted');
     }
 }

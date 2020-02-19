@@ -4,6 +4,10 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Portfolio;
+use App\PortCategory;
+use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class PortfoliosController extends Controller
 {
@@ -14,7 +18,9 @@ class PortfoliosController extends Controller
      */
     public function index()
     {
-        //
+        $portfolios = Portfolio::all();
+        $portcategories = PortCategory::all();
+        return view('admin.portfolio.index')->with('portfolios', $portfolios)->with('portcategories', $portcategories);
     }
 
     /**
@@ -24,7 +30,8 @@ class PortfoliosController extends Controller
      */
     public function create()
     {
-        //
+        $portcategories = PortCategory::all();
+        return view('admin.portfolio.create')->with('portcategories', $portcategories);
     }
 
     /**
@@ -35,7 +42,36 @@ class PortfoliosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(
+            $request, [
+            'title'=> 'required',
+            'category'=> 'required',
+            'image'=> 'required|mimes:jpeg,jpg,bmp,png|max:1500',
+            'description' => 'required'
+
+        ]);
+        $image = $request->file('image');
+        $slug = Str::slug($request->title);
+        if(isset($image)){
+            $currentDate = Carbon::now()->toDateString();
+            $imagename = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
+            if (!file_exists('img/portfolio') ) {
+                mkdir('img/portfolio', 0777, true);
+            }
+
+           $image->move('img/portfolio', $imagename);
+        }else{
+            $imagename = 'default.png';
+        }
+
+        $portfolio = new Portfolio();
+        $portfolio->title = $request->title;
+        $portfolio->category = $request->category;
+        $portfolio->description = $request->description;
+        $portfolio->image = $imagename;
+        $portfolio->save();
+        return redirect('/admin/portfolio')->with('successMsg', 'Portfolio Item Successfully Added');
+
     }
 
     /**
@@ -57,7 +93,9 @@ class PortfoliosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $portfolios = Portfolio::find($id);
+        $portcategories = PortCategory::all();
+        return view('admin.portfolio.index')->with('portfolios', $portfolios)->with('portcategories', $portcategories);
     }
 
     /**
@@ -69,7 +107,32 @@ class PortfoliosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title'=> 'required',
+            'category'=> 'required',
+            'image'=> 'mimes:jpeg,jpg,bmp|max:1500',
+            'description' => 'required'
+
+        ]);
+        $image = $request->file('image');
+        $slug = str_slug($request->title);
+        $portfolio = Portfolio::find($id);
+        if(isset($image)){
+            $currentDate = Carbon::now()->toDateString();
+            $imagename = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
+
+            $path = $request->file('image')->storeAs('img/portfolio', $imagename);
+        }
+        else{
+            $imagename = $portfolio->image;
+        }
+
+        $portfolio->title = $request->title;
+        $portfolio->category = $request->category;
+        $portfolio->image = $imagename;
+        $portfolio->description = $request->description;
+        $portfolio->save();
+        return redirect()->route('portfolio.index')->with('successMsg', 'Portfolio Item Successfully Updated');
     }
 
     /**
@@ -80,6 +143,12 @@ class PortfoliosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $portfolio = Portfolio::find($id);
+        if (file_exists('img/portfolio/'.$portfolio->image))
+        {
+            unlink('img/portfolio/'.$portfolio->image);
+        }
+        $portfolio->delete();
+        return redirect()->back()->with('successMsg','Item successfully Deleted');
     }
 }
