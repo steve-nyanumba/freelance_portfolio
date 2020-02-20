@@ -13,12 +13,9 @@
 
 Route::get('/', 'HomeController@index')->name('welcome');
 Route::get('/blog/{post}', 'HomeController@show')->name('blog');
-<<<<<<< HEAD
+
+
 Route::get('/portfolio/{portfolio} ', 'HomeController@reveal')->name('portfolio');
-=======
->>>>>>> eef4cb3da2cec049015cb59f1f1142cb82f1a321
-
-
 
 Auth::routes();
 
