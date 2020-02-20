@@ -46,13 +46,9 @@ class PortfoliosController extends Controller
             $request, [
             'title'=> 'required',
             'category'=> 'required',
-<<<<<<< HEAD
             'image'=> 'required|mimes:jpeg,jpg,bmp,png|max:1500',
             'description' => 'required'
-=======
-            'image'=> 'required|mimes:jpeg,jpg,bmp,png|max:1500'
->>>>>>> eef4cb3da2cec049015cb59f1f1142cb82f1a321
-
+            'image' => 'required|mimes:jpeg,jpg,bmp,png|max:1500'
         ]);
         $image = $request->file('image');
         $slug = Str::slug($request->title);
@@ -71,10 +67,7 @@ class PortfoliosController extends Controller
         $portfolio = new Portfolio();
         $portfolio->title = $request->title;
         $portfolio->category = $request->category;
-<<<<<<< HEAD
         $portfolio->description = $request->description;
-=======
->>>>>>> eef4cb3da2cec049015cb59f1f1142cb82f1a321
         $portfolio->image = $imagename;
         $portfolio->save();
         return redirect('/admin/portfolio')->with('successMsg', 'Portfolio Item Successfully Added');
@@ -117,12 +110,9 @@ class PortfoliosController extends Controller
         $this->validate($request, [
             'title'=> 'required',
             'category'=> 'required',
-<<<<<<< HEAD
             'image'=> 'mimes:jpeg,jpg,bmp|max:1500',
             'description' => 'required'
-=======
             'image'=> 'mimes:jpeg,jpg,bmp|max:1500'
->>>>>>> eef4cb3da2cec049015cb59f1f1142cb82f1a321
 
         ]);
         $image = $request->file('image');
@@ -141,10 +131,7 @@ class PortfoliosController extends Controller
         $portfolio->title = $request->title;
         $portfolio->category = $request->category;
         $portfolio->image = $imagename;
-<<<<<<< HEAD
         $portfolio->description = $request->description;
-=======
->>>>>>> eef4cb3da2cec049015cb59f1f1142cb82f1a321
         $portfolio->save();
         return redirect()->route('portfolio.index')->with('successMsg', 'Portfolio Item Successfully Updated');
     }
