@@ -66,12 +66,13 @@
 						<span><i class="fas fa-home"></i><a href="/">Home</a></span>
 						{{-- <span><i class="fas fa-comment"></i><a href="#">5 comments</a></span> --}}
 						<span><i class="fas fa-calendar-alt"></i>{{ $post->created_at->toDateString() }}</span>
+						<div class="m-5">
+							{!! $post->content !!}
+						</div>
 					</div>
 
 					<!-- Content -->
-					<div class="blog-content">
-                        {!! $post->content !!}
-					</div>
+					
 
 					{{-- <!-- Comments -->
 					<div class="blog-comments mt-100">

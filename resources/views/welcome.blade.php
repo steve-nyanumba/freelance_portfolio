@@ -592,14 +592,12 @@
 							<img alt="" src="/img/portfolio/{{ $item->image }}">
 							<figcaption>
 								<h3>{{ $item->title }}</h3>
-								<p>{{ $item->category }}</p><i class="fas fa-image"></i>
-<<<<<<< HEAD
+								<p>{{ $item->category }}</p>
 								<a href="{{ route('portfolio' , $item->id )}}"></a>
-=======
 								<a class="image-link" href="/img/portfolio/{{ ($item->image) }}"></a>
->>>>>>> eef4cb3da2cec049015cb59f1f1142cb82f1a321
 							</figcaption>
 						</figure>
+						<label for="figure"><a class="btn btn-sm btn-info" href="{{ route('portfolio', $item->id) }}">About {{$item->title}}</a></label>
 					</div>
                     @endforeach
 				</div>
@@ -624,7 +622,7 @@
                     <div class="col-lg-4 col-sm-6">
 						<div class="blog-item">
 							<div class="thumbnail">
-								<span class="date">{{ $item->created_at }}</span>
+								<span class="date">{{ $item->created_at->format('M jS, Y') }}</span>
 								<a href="{{ route('blog',$item->id) }}"><img alt="" src="/img/post/{{ ($item->image) }}"></a>
 							</div>
 							<div class="meta">
@@ -633,11 +631,7 @@
 							<h4><a href="single-blog.html">{{ $item->title }}</a></h4>
 							{!! Str::limit($item->content, 30) !!}
 							<div class="blog-btn">
-<<<<<<< HEAD
-								<a href="{{ route('blog',$item->id) }}" class="btn-st">Read More</a>
-=======
-								<a href="single-blog.html" class="btn-st">Read More</a>
->>>>>>> eef4cb3da2cec049015cb59f1f1142cb82f1a321
+								<a href="{{ route('blog',$item->id) }}" class="btn-st" >Read More</a>
 							</div>
 						</div>
 					</div>

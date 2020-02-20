@@ -54,12 +54,13 @@
                   <label for="image">Image</label>
                   <input type="file" id="image" class="form-control" name="image" required>
                 </div>
-<<<<<<< HEAD
+                <div class="form-group">
+                  <label for="link">Link to project</label>
+                  <input type="url" id="link" class="form-control" name="link">
+                </div>
                 <div class="mb-3">
                   <textarea class="textarea" placeholder="Place some text here" name="description" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                 </div>
-=======
->>>>>>> eef4cb3da2cec049015cb59f1f1142cb82f1a321
                 <div class="form-group">
                     <input name="submit" type="submit" value="submit" class="btn btn-block btn-primary">
                 </div>

@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 		<!-- Title -->
-		<title>Leila - Personal Portfolio Template</title>
+		<title>Steve Nyanumba - {{ $portfolio->title}} </title>
 
 		<!-- CSS Plugins -->
         <link rel="stylesheet" href="{{ asset('frontend/css/plugins/bootstrap.min.css') }}">
@@ -51,7 +51,7 @@
 
 		<!--Blog Page-->
 		<div class="blog-page" data-simplebar>
-			<a href="/" class="close-blog" data-tooltip="close blog" data-position="bottom">
+			<a href="/" class="close-blog" data-tooltip="close Portfolio" data-position="bottom">
 				<i class="far fa-times-circle"></i>
 			</a>
 			<div class="blog-image" >
@@ -67,13 +67,13 @@
 						{{-- <span><i class="fas fa-comment"></i><a href="#">5 comments</a></span> --}}
 						<span><i class="fas fa-calendar-alt"></i>{{ $portfolio->created_at->format('D, jS F, Y' ) }}</span>
 					<!-- Content -->
-						<div class="blog-content m-5">
+						<div class="m-5">
 							{!! $portfolio->description !!}
 						</div>
+						@if (!empty($portfolio->link) )
+							<a href="{{$portfolio->link}}" class="btn btn-lg btn-success" >View Project</a>
+						@endif
 					</div>
-
-					
-
 				</div>
 			</div>
 		</div>

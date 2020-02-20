@@ -2,10 +2,6 @@
 				CSS Styles
 --------------------------------------------------
 
-    Template Name: Leila - Personal Portfolio Template
-    Author: Malyarchuk
-    Copyright: 2019
-
 --------------------------------------------------
 
 Table of Content
@@ -30,7 +26,7 @@ Table of Content
 		1. Body and Core Css
 ----------------------------------- */
 
-@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
+@import url('https://fonts.googleapis.com/css?family=Acme&display=swap');
 
 * {
 	margin: 0;
@@ -50,8 +46,8 @@ Table of Content
 }
 
 body {
-	font-family: 'Poppins',sans-serif;
-	font-size: 14px;
+	font-family: 'Acme',sans-serif;
+	font-size: 18px;
 	color: #393a3e;
 	overflow: hidden;
 	letter-spacing: 0.8px;
@@ -98,7 +94,7 @@ h3 {
 }
 
 h4 {
-	font-size: 18px;
+	font-size: 22px;
 }
 
 i, em {
@@ -653,7 +649,7 @@ blockquote span img {
 	right: 0;
 	bottom: 0;
 	margin: auto;
-	background-color: #2d2d2d;
+	background-color: rgb(19, 89, 129);
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
 	transition: transform 0.3s ease, background 0.3s ease, opacity 0.3s ease, top 0.3s ease;
@@ -688,7 +684,7 @@ blockquote span img {
 .menu .menu-item i {
 	width: 60px;
 	height: 60px;
-	color: #1a2a41;
+	color: rgb(19, 89, 129);
 	font-size: 22px;
 	display: flex;
 	align-items: center;
@@ -700,8 +696,8 @@ blockquote span img {
 
 .menu .but-menu:hover,
 .menu .menu-item:hover {
-	-webkit-box-shadow: 0 0 15px 0 #fff;
-	box-shadow: 0 0 15px 0 #fff;
+	-webkit-box-shadow: 0 0 18px 0 rgb(255, 255, 255);
+	box-shadow: 0 0 18px 0 rgb(255, 255, 255);
 }
 
 .menu-toggle {
@@ -2065,7 +2061,7 @@ blockquote span img {
 }
 
 #preloader .loading .text-loading {
-	font: bold 50px 'Poppins',sans-serif;
+	font: bold 50px 'Acme',sans-serif;
 	text-align: center;
 	user-select: none;
 }
@@ -2137,7 +2133,7 @@ blockquote span img {
 
 [data-tooltip]:after {
 	content: attr(data-tooltip);
-	font: normal 10px 'Poppins',sans-serif;
+	font: normal 10px 'Acme',sans-serif;
 	background-color: #000;
 	color: #fff;
 	padding: 10px 15px;
@@ -2424,7 +2420,7 @@ blockquote span img {
 		height: 60px;
 	}
 	#preloader .loading .text-loading {
-		font: bold 35px 'Poppins',sans-serif;
+		font: bold 35px 'Acme',sans-serif;
 	}
 }
 

@@ -18,10 +18,8 @@ class CreatePortfoliosTable extends Migration
             $table->text('category');
             $table->text('title');
             $table->string('image')->default('default.png');
-<<<<<<< HEAD
             $table->longText('description');
-=======
->>>>>>> eef4cb3da2cec049015cb59f1f1142cb82f1a321
+            $table->string('link')->nullable();
             $table->timestamps();
         });
     }
