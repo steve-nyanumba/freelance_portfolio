@@ -12,16 +12,16 @@
         <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}" type="image/x-icon">
 
 		<!-- CSS Plugins -->
-        <link rel="stylesheet" href="{{ asset('frontend/css/plugins/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/css/plugins/font-awesome.css') }}">
-		<link rel="stylesheet" href="{{ asset('frontend/css/plugins/magnific-popup.css') }}">
-		<link rel="stylesheet" href="{{ asset('frontend/css/plugins/simplebar.css') }}">
-		<link rel="stylesheet" href="{{ asset('frontend/css/plugins/owl.carousel.min.css') }}">
-		<link rel="stylesheet" href="{{ asset('frontend/css/plugins/owl.theme.default.min.css') }}">
-		<link rel="stylesheet" href="{{ asset('frontend/css/plugins/jquery.animatedheadline.css') }}">
+        <link rel="stylesheet" href="/frontend/css/plugins/bootstrap.min.css">
+        <link rel="stylesheet" href="/frontend/css/plugins/font-awesome.css">
+		<link rel="stylesheet" href="/frontend/css/plugins/magnific-popup.css">
+		<link rel="stylesheet" href="/frontend/css/plugins/simplebar.css">
+		<link rel="stylesheet" href="/frontend/css/plugins/owl.carousel.min.css">
+		<link rel="stylesheet" href="/frontend/css/plugins/owl.theme.default.min.css">
+		<link rel="stylesheet" href="/frontend/css/plugins/jquery.animatedheadline.css">
 
 		<!-- CSS Base -->
-        <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+        <link rel="stylesheet" href="frontend/css/style.css">
 
     </head>
     <body>
