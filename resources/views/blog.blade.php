@@ -11,16 +11,16 @@
 		<title>Leila - Personal Portfolio Template</title>
 
 		<!-- CSS Plugins -->
-        <link rel="stylesheet" href="{{ asset('frontend/css/plugins/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/css/plugins/font-awesome.css') }}">
-		<link rel="stylesheet" href="{{ asset('frontend/css/plugins/magnific-popup.css') }}">
-		<link rel="stylesheet" href="{{ asset('frontend/css/plugins/simplebar.css') }}">
-		<link rel="stylesheet" href="{{ asset('frontend/css/plugins/owl.carousel.min.css') }}">
-		<link rel="stylesheet" href="{{ asset('frontend/css/plugins/owl.theme.default.min.css') }}">
-		<link rel="stylesheet" href="{{ asset('frontend/css/plugins/jquery.animatedheadline.css') }}">
+        <link rel="stylesheet" href="frontend/css/plugins/bootstrap.min.css">
+        <link rel="stylesheet" href="frontend/css/plugins/font-awesome.css">
+		<link rel="stylesheet" href="frontend/css/plugins/magnific-popup.css">
+		<link rel="stylesheet" href="frontend/css/plugins/simplebar.css">
+		<link rel="stylesheet" href="frontend/css/plugins/owl.carousel.min.css">
+		<link rel="stylesheet" href="frontend/css/plugins/owl.theme.default.min.css">
+		<link rel="stylesheet" href="frontend/css/plugins/jquery.animatedheadline.css">
 
 		<!-- CSS Base -->
-        <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+        <link rel="stylesheet" href="frontend/css/style.css">
 
     </head>
     <body>
@@ -155,14 +155,14 @@
 			</div>
 		</div>
 
-		<script src="{{ asset('frontend/js/jquery.min.js') }}"></script>
-		<script src="{{ asset('frontend/js/isotope.pkgd.min.js') }}"></script>
-		<script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
-		<script src="{{ asset('frontend/js/simplebar.js') }}"></script>
-		<script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
-		<script src="{{ asset('frontend/js/jquery.magnific-popup.min.js') }}"></script>
-		<script src="{{ asset('frontend/js/jquery.animatedheadline.min.js') }}"></script>
-        <script src="{{ asset('frontend/js/main.js') }}"></script>
+		<script src="/frontend/js/jquery.min.js"></script>
+		<script src="/frontend/js/isotope.pkgd.min.js"></script>
+		<script src="/frontend/js/bootstrap.min.js"></script>
+		<script src="/frontend/js/simplebar.js"></script>
+		<script src="/frontend/js/owl.carousel.min.js"></script>
+		<script src="/frontend/js/jquery.magnific-popup.min.js"></script>
+		<script src="/frontend/js/jquery.animatedheadline.min.js"></script>
+        <script src="/frontend/js/main.js"></script>
         <script src="https://maps.google.com/maps/api/js?sensor=false"></script>
     </body>
 </html>

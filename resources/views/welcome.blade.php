@@ -761,18 +761,18 @@
         </section>
 
 
-        <script src="{{ asset('frontend/js/jquery.min.js') }}"></script>
-		<script src="{{ asset('frontend/js/isotope.pkgd.min.js') }}"></script>
-		<script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
-		<script src="{{ asset('frontend/js/simplebar.js') }}"></script>
-		<script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
-		<script src="{{ asset('frontend/js/jquery.magnific-popup.min.js') }}"></script>
-		<script src="{{ asset('frontend/js/jquery.animatedheadline.min.js') }}"></script>
-        <script src="{{ asset('frontend/js/main.js') }}"></script>
+        <script src="frontend/js/jquery.min.js"></script>
+		<script src="frontend/js/isotope.pkgd.min.js"></script>
+		<script src="frontend/js/bootstrap.min.js"></script>
+		<script src="frontend/js/simplebar.js"></script>
+		<script src="frontend/js/owl.carousel.min.js"></script>
+		<script src="frontend/js/jquery.magnific-popup.min.js"></script>
+		<script src="frontend/js/jquery.animatedheadline.min.js"></script>
+        <script src="frontend/js/main.js"></script>
         <script src="https://maps.google.com/maps/api/js?sensor=false"></script>
 
 		<!-- Page Script -->
-		<script src="{{ asset('frontend/js/jquery.ripples-min.js') }}"></script>
+		<script src="frontend/js/jquery.ripples-min.js"></script>
 		<script>
 			$('.home').ripples({
 				resolution: 1000,
